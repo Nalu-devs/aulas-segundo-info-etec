@@ -1,0 +1,13 @@
+# dockerfile=>descreve os passos para buidar uma imagem
+# docker-compose=>descrever como subir uma ou mais aplicação de uma unica vez
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app
+  db:
