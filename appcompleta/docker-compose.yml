@@ -9,5 +9,14 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./app
+      - ./app:/app
+    network:
+      - rede_privada
   db:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD = senha
+      - MYSQL_DATABASE = meubanco
+    volumes:
+      - db_data:/var/lib/mysql
+      -
