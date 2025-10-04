@@ -10,7 +10,7 @@ services:
       - "8000:8000"
     volumes:
       - ./app:/app
-    network:
+    networks:
       - rede_privada
   db:
     image: mysql:5.7
@@ -19,4 +19,14 @@ services:
       - MYSQL_DATABASE = meubanco
     volumes:
       - db_data:/var/lib/mysql
-      -
+      - ./db_script:/docker-entrypoint-initdb.b
+    networks:
+      -rede_privada
+    ports:
+      -"3306:3306"
+networks:
+  rede_privada:
+    driver: bridge
+
+volumes:
+  db_data:
